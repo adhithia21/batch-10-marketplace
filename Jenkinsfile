@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "step build"
-                echo 'test trigger webhook 3'
+                sh 'go build -o myapp'
             }
         }
         stage('Test') {
