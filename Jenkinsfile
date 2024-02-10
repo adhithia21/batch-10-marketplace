@@ -9,7 +9,7 @@ pipeline {
             steps {
                 echo "step build"
                 sh 'go build -o myapp'
-                sh 'scp -o StrictHostKeyChecking=no -i $RSA_TRAINER myapp trainer@34.101.120.65:~'
+                
             }
         }
         stage('Test') {
@@ -20,6 +20,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo "step deploy"
+                sh 'scp -o StrictHostKeyChecking=no -i $RSA_TRAINER myapp trainer@34.101.120.65:~'
+                sh 'ssh -o StrictHostKeyChecking=no -i $RSA_TRAINER trainer@34.101.120.65 "sudo systemctl restart marketplace'
             }
         }
     }
