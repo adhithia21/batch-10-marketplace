@@ -20,9 +20,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo "step deploy"
-                sh 'ssh -o StrictHostKeyChecking=no -i $RSA_TRAINER trainer@34.101.120.65 "sudo systemctl stop marketplace'
+                sh 'ssh -o StrictHostKeyChecking=no -i $RSA_TRAINER trainer@34.101.120.65 "sudo systemctl stop marketplace"'
                 sh 'scp -o StrictHostKeyChecking=no -i $RSA_TRAINER myapp trainer@34.101.120.65:~'
-                sh 'ssh -o StrictHostKeyChecking=no -i $RSA_TRAINER trainer@34.101.120.65 "sudo systemctl start marketplace'
+                sh 'ssh -o StrictHostKeyChecking=no -i $RSA_TRAINER trainer@34.101.120.65 "sudo systemctl start marketplace"'
             }
         }
     }
